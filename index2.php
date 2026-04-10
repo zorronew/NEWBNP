@@ -173,7 +173,7 @@ margin-bottom:0px;
 input{
 width:100%;
 padding:10px;
-border:2px solid transparent; /* 🔥 cambio clave */
+border:2px solid #d6d6d6; /* 🔥 cambio clave */
 border-radius:4px;
 margin-bottom:0px;
 font-size:17px;
