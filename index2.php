@@ -173,23 +173,24 @@ margin-bottom:0px;
 input{
 width:100%;
 padding:10px;
-border:0.1px solid #d6d6d6;
+border:2px solid transparent; /* 🔥 cambio clave */
 border-radius:4px;
 margin-bottom:0px;
 font-size:17px;
 letter-spacing:0.5px;
 color:#606060;
-
 }
 
+input::placeholder{
+font-size:16px;
+color:#999;
+}
 
-/* 🔥 ESTO AGREGAS AQUÍ */
 input:focus{
 outline:none;
 border:2px solid #000;
 box-shadow:none;
 }
-
 /* 🔥 AUTOFILL (AQUÍ VA ESTO) */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
