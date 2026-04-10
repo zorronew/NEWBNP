@@ -571,7 +571,7 @@ fill="#0b6b3a"/>
 
 <span class="eye" id="togglePassword"></span>
 
-<span id="errorMsg">!</span>
+<span id="errorMsg">Clave Invalida!</span>
 
 </div>
 
