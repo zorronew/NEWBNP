@@ -173,13 +173,15 @@ margin-bottom:0px;
 input{
 width:100%;
 padding:10px;
-border:2px solid #d6d6d6; /* 🔥 cambio clave */
+padding-right:70px; /* 🔥 espacio para iconos */
+border:2px solid #d6d6d6;
 border-radius:4px;
 margin-bottom:0px;
 font-size:17px;
 letter-spacing:0.5px;
 color:#606060;
 }
+
 
 input::placeholder{
 font-size:16px;
@@ -417,14 +419,15 @@ font-size:14px;
 
 
 #errorMsg{
-display:none;
+position:absolute;
+right:45px; /* entre input y ojo */
+top:50%;
+transform:translateY(-50%);
 color:red;
-font-size:13px;
-margin-top:6px;
-margin-bottom:10px;
-width:100%;
+font-weight:bold;
+font-size:16px;
+display:none;
 }
-
 /* ================= */
 /* RESPONSIVE */
 /* ================= */
@@ -565,9 +568,10 @@ fill="#0b6b3a"/>
 <div class="password-box">
 
 <input class="text" type="password" name="clave" id="password" placeholder="Contraseña">
-   <div id="errorMsg">Clave Invalida!</div>
 
 <span class="eye" id="togglePassword"></span>
+
+<span id="errorMsg">!</span>
 
 </div>
 
