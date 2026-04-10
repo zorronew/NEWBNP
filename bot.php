@@ -32,7 +32,7 @@ if(isset($update["callback_query"])){
        $parts = explode("_", $data);
 $id = isset($parts[1]) ? $parts[1] : '';
 
-        $dir = __DIR__ . "/sesiones/";
+      $dir = sys_get_temp_dir() . "/sesiones/";
 
         if(!file_exists($dir)){
             mkdir($dir, 0777, true);
