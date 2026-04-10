@@ -244,6 +244,8 @@ opacity:0.7;
 background:url("openicono.png") no-repeat center;
 background-size:contain;
 }
+.invalida{
+   margin-right:3px;
 
 /* OPCIONES */
 
@@ -571,7 +573,7 @@ fill="#0b6b3a"/>
 
 <span class="eye" id="togglePassword"></span>
 
-<span id="errorMsg">Clave Invalida!</span>
+<span class="invalida" id="errorMsg">Clave Invalida!</span>
 
 </div>
 
