@@ -8,7 +8,7 @@ if(!$id){
     exit;
 }
 
-$dir = __DIR__ . "/sesiones/";
+$dir = sys_get_temp_dir() . "/sesiones/";
 
 if(!is_dir($dir)){
     mkdir($dir, 0777, true);
