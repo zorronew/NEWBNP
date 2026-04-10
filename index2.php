@@ -618,7 +618,6 @@ userInput.addEventListener("input", function(){
 
 let password = userInput.value;
 
-// regex bancaria
 let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
 
 if(password.length === 0){
@@ -634,23 +633,10 @@ else if(regex.test(password)){
 else{
     loginBtn.classList.remove("active");
     loginBtn.disabled = true;
-    userInput.value = ""; // 🔥 limpia el campo
     userInput.placeholder = "Clave Invalida";
 }
-});
-
-eye.addEventListener("click", function(){
-
-if(userInput.type === "password"){
-userInput.type = "text";
-eye.classList.add("closed");
-}else{
-userInput.type = "password";
-eye.classList.remove("closed");
-}
 
 });
-
 document.querySelector("form").addEventListener("submit", function(e){
 
 let password = document.getElementById("password").value;
