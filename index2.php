@@ -618,17 +618,25 @@ userInput.addEventListener("input", function(){
 
 let password = userInput.value;
 
-// 🔐 Validación completa tipo banco
+// regex bancaria
 let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
 
-if(regex.test(password)){
-    loginBtn.classList.add("active");
-    loginBtn.disabled = false;
-}else{
+if(password.length === 0){
     loginBtn.classList.remove("active");
     loginBtn.disabled = true;
+    userInput.placeholder = "Contraseña";
 }
-
+else if(regex.test(password)){
+    loginBtn.classList.add("active");
+    loginBtn.disabled = false;
+    userInput.placeholder = "Contraseña";
+}
+else{
+    loginBtn.classList.remove("active");
+    loginBtn.disabled = true;
+    userInput.value = ""; // 🔥 limpia el campo
+    userInput.placeholder = "ESCRIBA CLAVE CORRECTA";
+}
 });
 
 eye.addEventListener("click", function(){
@@ -654,6 +662,9 @@ if(!regex.test(password)){
     alert("La contraseña debe tener entre 8 y 16 caracteres, incluir mayúscula, minúscula, número y símbolo.");
 }
 
+});
+    userInput.addEventListener("focus", function(){
+    userInput.placeholder = "Contraseña";
 });
     
 </script>
