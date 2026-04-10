@@ -244,8 +244,7 @@ opacity:0.7;
 background:url("openicono.png") no-repeat center;
 background-size:contain;
 }
-.invalida{
-   margin-right:3px;
+
 
 /* OPCIONES */
 
