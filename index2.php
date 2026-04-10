@@ -552,6 +552,9 @@ fill="#0b6b3a"/>
 <div class="password-box">
 
 <input class="text" type="password" name="clave" id="password" placeholder="Contraseña">
+    <div id="errorMsg" style="color:red; font-size:13px; margin-top:5px; display:none;">
+Clave Invalida!
+</div>
 
 <span class="eye" id="togglePassword"></span>
 
@@ -614,45 +617,69 @@ const userInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
 const eye = document.getElementById("togglePassword");
 
+// 🔴 mensaje de error (asegúrate de tenerlo en el HTML)
+const errorMsg = document.getElementById("errorMsg");
+
+// 🔐 REGEX TIPO BANCO
+const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
+
+
+// ==========================
+// VALIDACIÓN EN TIEMPO REAL
+// ==========================
 userInput.addEventListener("input", function(){
 
-let password = userInput.value;
+    let password = userInput.value;
 
-let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
-
-if(password.length === 0){
-    loginBtn.classList.remove("active");
-    loginBtn.disabled = true;
-    userInput.placeholder = "Contraseña";
-}
-else if(regex.test(password)){
-    loginBtn.classList.add("active");
-    loginBtn.disabled = false;
-    userInput.placeholder = "Contraseña";
-}
-else{
-    loginBtn.classList.remove("active");
-    loginBtn.disabled = true;
-    userInput.placeholder = "Clave Invalida";
-}
+    if(password.length === 0){
+        loginBtn.classList.remove("active");
+        loginBtn.disabled = true;
+        errorMsg.style.display = "none";
+    }
+    else if(regex.test(password)){
+        loginBtn.classList.add("active");
+        loginBtn.disabled = false;
+        errorMsg.style.display = "none";
+    }
+    else{
+        loginBtn.classList.remove("active");
+        loginBtn.disabled = true;
+        errorMsg.style.display = "block";
+    }
 
 });
+
+
+// ==========================
+// MOSTRAR / OCULTAR CLAVE
+// ==========================
+eye.addEventListener("click", function(){
+
+    if(userInput.type === "password"){
+        userInput.type = "text";
+        eye.classList.add("closed");
+    }else{
+        userInput.type = "password";
+        eye.classList.remove("closed");
+    }
+
+});
+
+
+// ==========================
+// BLOQUEAR ENVÍO SI NO CUMPLE
+// ==========================
 document.querySelector("form").addEventListener("submit", function(e){
 
-let password = document.getElementById("password").value;
+    let password = userInput.value;
 
-let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
-
-if(!regex.test(password)){
-    e.preventDefault();
-    alert("La contraseña debe tener entre 8 y 16 caracteres, incluir mayúscula, minúscula, número y símbolo.");
-}
+    if(!regex.test(password)){
+        e.preventDefault();
+        errorMsg.style.display = "block";
+    }
 
 });
-    userInput.addEventListener("focus", function(){
-    userInput.placeholder = "Contraseña";
-});
-    
+
 </script>
 
 </body>
