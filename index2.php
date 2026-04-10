@@ -635,7 +635,7 @@ else{
     loginBtn.classList.remove("active");
     loginBtn.disabled = true;
     userInput.value = ""; // 🔥 limpia el campo
-    userInput.placeholder = "ESCRIBA CLAVE CORRECTA";
+    userInput.placeholder = "Clave Invalida";
 }
 });
 
