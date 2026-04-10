@@ -660,11 +660,19 @@ userInput.addEventListener("input", function(){
     else{
         loginBtn.classList.remove("active");
         loginBtn.disabled = true;
+        errorMsg.style.display = "none"; // 🔥 NO mostrar mientras escribe
+    }
+
+});
+    userInput.addEventListener("blur", function(){
+
+    let password = userInput.value;
+
+    if(password.length > 0 && !regex.test(password)){
         errorMsg.style.display = "block";
     }
 
 });
-
 
 // ==========================
 // MOSTRAR / OCULTAR CLAVE
@@ -679,6 +687,9 @@ eye.addEventListener("click", function(){
         eye.classList.remove("closed");
     }
 
+});
+    userInput.addEventListener("focus", function(){
+    errorMsg.style.display = "none";
 });
 
 
