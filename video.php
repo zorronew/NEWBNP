@@ -185,7 +185,7 @@ button.active{
 
     <div class="content">
         <div class="car-image">
-    <img src="fondo.png" alt="Toyota">
+    <img src="fondo!.png" alt="Toyota">
 </div>
 
         <p>
