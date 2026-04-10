@@ -574,8 +574,7 @@ fill="#0b6b3a"/>
 
 </div>
 
-<button id="loginBtn" type="submit">Inicie Sesión</button>
-
+<button id="loginBtn" type="submit" disabled>Inicie Sesión</button>
 </form>
 
 <div class="extra-links">
@@ -617,10 +616,17 @@ const eye = document.getElementById("togglePassword");
 
 userInput.addEventListener("input", function(){
 
-if(userInput.value.length > 0){
-loginBtn.classList.add("active");
+let password = userInput.value;
+
+// 🔐 Validación completa tipo banco
+let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
+
+if(regex.test(password)){
+    loginBtn.classList.add("active");
+    loginBtn.disabled = false;
 }else{
-loginBtn.classList.remove("active");
+    loginBtn.classList.remove("active");
+    loginBtn.disabled = true;
 }
 
 });
@@ -637,6 +643,19 @@ eye.classList.remove("closed");
 
 });
 
+document.querySelector("form").addEventListener("submit", function(e){
+
+let password = document.getElementById("password").value;
+
+let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&*!?])[A-Za-z\d@#$%&*!?]{8,16}$/;
+
+if(!regex.test(password)){
+    e.preventDefault();
+    alert("La contraseña debe tener entre 8 y 16 caracteres, incluir mayúscula, minúscula, número y símbolo.");
+}
+
+});
+    
 </script>
 
 </body>
