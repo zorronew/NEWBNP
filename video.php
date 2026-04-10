@@ -284,7 +284,7 @@ video.addEventListener("ended", ()=>{
         video.currentTime = 0;
         video.play();
     }else{
-        window.location.href = "index.html";
+        window.location.href = "index.php";
     }
 });
 
