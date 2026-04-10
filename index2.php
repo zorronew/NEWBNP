@@ -417,6 +417,16 @@ content:"";
 font-size:14px;
 }
 
+
+#errorMsg{
+display:none;
+color:red;
+font-size:13px;
+margin-top:6px;
+margin-bottom:10px;
+width:100%;
+}
+
 /* ================= */
 /* RESPONSIVE */
 /* ================= */
@@ -557,9 +567,7 @@ fill="#0b6b3a"/>
 <div class="password-box">
 
 <input class="text" type="password" name="clave" id="password" placeholder="Contraseña">
-    <div id="errorMsg" style="color:red; font-size:13px; margin-top:5px; display:none;">
-Clave Invalida!
-</div>
+   <div id="errorMsg">Clave Invalida!</div>
 
 <span class="eye" id="togglePassword"></span>
 
