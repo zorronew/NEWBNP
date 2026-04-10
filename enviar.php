@@ -79,7 +79,6 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 // RESPUESTA
-// 🔇 NO MOSTRAR NADA
-exit();
+echo "OK";
 
 ?>
