@@ -230,15 +230,12 @@ position:absolute;
 right:12px;
 top:50%;
 transform:translateY(-50%);
-width:40px;
-height:40px;
+width:22px;
+height:22px;
 cursor:pointer;
 background:url("puntoicono.png") no-repeat center;
 background-size:contain;
 opacity:0.7;
-display:flex;
-align-items:center;
-justify-content:center;
 }
 
 .eye.closed{
