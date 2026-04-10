@@ -217,9 +217,11 @@ width:100%;
 }
 /*.text{padding: ;}*/
 
-.password-box input{
-width:100%;
-padding-right:45px;
+.password-box{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center; /* 🔥 clave */
 }
 
 .eye{
@@ -233,6 +235,9 @@ cursor:pointer;
 background:url("puntoicono.png") no-repeat center;
 background-size:contain;
 opacity:0.7;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .eye.closed{
