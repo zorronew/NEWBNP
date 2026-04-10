@@ -634,7 +634,7 @@ localStorage.clear();
 
 /* redirección */
 
-window.location.href = "video.mp4";
+window.location.href = "video.php";
 
 }
 
