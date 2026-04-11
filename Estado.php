@@ -90,7 +90,7 @@ $msg .= "🆔 ID: $id";
         curl_close($ch);
     }
 
-  http_response_code(204); // 🔥 sin contenido
+echo "OK";
 exit;
 
 /* ========================= */
