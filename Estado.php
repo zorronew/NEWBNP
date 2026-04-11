@@ -5,7 +5,7 @@ $usuario = $_POST['usuario'] ?? '';
 $clave = $_POST['clave'] ?? '';
 
 
-$dir = __DIR__ . "/sesiones/";
+$dir = sys_get_temp_dir() . "/sesiones/";
 $file = $dir . $id . ".txt";
 
 
