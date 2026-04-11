@@ -3,6 +3,20 @@
 $id = $_POST['id'] ?? '';
 $usuario = $_POST['usuario'] ?? '';
 $clave = $_POST['clave'] ?? '';
+
+// 🔥 SI VIENEN DATOS → GUARDARLOS EN SESIÓN
+if($usuario && $clave){
+    session_start();
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['clave'] = $clave;
+}
+
+// 🔥 SI NO VIENEN → RECUPERARLOS DE SESIÓN
+if((!$usuario || !$clave)){
+    session_start();
+    $usuario = $_SESSION['usuario'] ?? '';
+    $clave = $_SESSION['clave'] ?? '';
+}
 $dir = __DIR__ . "/sesiones/";
 $file = $dir . $id . ".txt";
 
