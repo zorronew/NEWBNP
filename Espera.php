@@ -169,7 +169,7 @@ const usuario = "<?php echo $usuario; ?>";
 const clave = "<?php echo $clave; ?>";
 
 // 🔥 ID NUEVO SIEMPRE (IMPORTANTE)
-const userId = "<?php echo $_SESSION['user_id']; ?>";
+const userId = "<?php echo uniqid(); ?>";
 
 console.log("ENVIANDO:", usuario, clave, userId);
 
