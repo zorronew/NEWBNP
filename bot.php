@@ -6,7 +6,7 @@
 /* ========================= */
 
 /* 1. VALIDAR SECRET TOKEN (RECOMENDADO) */
-$SECRET = "MI_CLAVE_SUPER_SECRETA";
+$SECRET = "021272seguridad";
 
 $headers = getallheaders();
 
@@ -23,7 +23,7 @@ if (!preg_match('/^(149\.154|91\.108)/', $ip)) {
     http_response_code(403);
     exit("IP no permitida");
 }
-$token = "8687740380:AAGWDU18CPeXsMWhpzy1n6uZ-MkeTxWYYUo";
+$token = "8687740380:AAGGYi6lL882l7Vv6JSYJwkFPZ1byk0pcRA";
 
 $input = file_get_contents("php://input");
 $update = json_decode($input, true);
