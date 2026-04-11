@@ -2,9 +2,7 @@
 
 session_start();
 
-if(!isset($_SESSION['user_id'])){
-    $_SESSION['user_id'] = uniqid();
-}
+$_SESSION['user_id'] = uniqid();
 
 // 🔥 GUARDAR CLAVE AQUÍ (ESTE ES EL FIX REAL)
 if(isset($_POST['clave'])){
