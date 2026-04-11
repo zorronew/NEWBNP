@@ -25,6 +25,7 @@ display:flex;
 flex-direction:column;
 align-items: center;
 background:#ffffff;
+    overflow-y: scroll;
 }
 #securityOverlay{
 position:fixed;
