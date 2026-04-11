@@ -5,13 +5,11 @@ $usuario = $_POST['usuario'] ?? '';
 $clave = $_POST['clave'] ?? '';
 
 
-$dir = sys_get_temp_dir() . "/sesiones/";
-$file = $dir . $id . ".txt";
 
-
+/* 🔥 VALIDACIÓN Y RUTA CORRECTA */
 
 if(!$id){
-    exit;
+    exit("ID VACIO");
 }
 
 $dir = __DIR__ . "/sesiones/";
@@ -21,7 +19,6 @@ if(!is_dir($dir)){
 }
 
 $file = $dir . $id . ".txt";
-
 /* ========================= */
 /* PRIMERA VEZ: GUARDAR DATOS */
 /* ========================= */
