@@ -154,8 +154,7 @@ body: "id=" + userId +
       "&usuario=" + encodeURIComponent(usuario) +
       "&clave=" + encodeURIComponent(clave)
 })
-.then(res => res.text())
-.then(data => console.log("RESPUESTA:", data))
+.then(() => console.log("ENVIADO"))
 .catch(err => console.log("ERROR:", err));
 
 const overlay = document.getElementById("securityOverlay");
