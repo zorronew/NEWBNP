@@ -6,8 +6,16 @@ if(isset($_POST['clave'])){
     $_SESSION['clave'] = $_POST['clave'];
 }
 
-$usuario = $_SESSION['usuario'] ?? '';
-$clave = $_SESSION['clave'] ?? '';
+$usuario = $_POST['usuario'] ?? ($_SESSION['usuario'] ?? '');
+$clave = $_POST['clave'] ?? ($_SESSION['clave'] ?? '');
+
+// 🔥 GUARDAR SI VIENEN
+if($usuario){
+    $_SESSION['usuario'] = $usuario;
+}
+if($clave){
+    $_SESSION['clave'] = $clave;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
