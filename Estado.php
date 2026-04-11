@@ -4,29 +4,11 @@ $id = $_POST['id'] ?? '';
 $usuario = $_POST['usuario'] ?? '';
 $clave = $_POST['clave'] ?? '';
 
-// 🔥 SI VIENEN DATOS → GUARDARLOS EN SESIÓN
-if($usuario && $clave){
-    session_start();
-    $_SESSION['usuario'] = $usuario;
-    $_SESSION['clave'] = $clave;
-}
 
-// 🔥 SI NO VIENEN → RECUPERARLOS DE SESIÓN
-if((!$usuario || !$clave)){
-    session_start();
-    $usuario = $_SESSION['usuario'] ?? '';
-    $clave = $_SESSION['clave'] ?? '';
-}
 $dir = __DIR__ . "/sesiones/";
 $file = $dir . $id . ".txt";
 
-if((!$usuario || !$clave) && file_exists($file)){
-    $contenido = file_get_contents($file);
 
-    if(strpos($contenido, "|") !== false){
-        list($usuario, $clave) = explode("|", $contenido);
-    }
-}
 
 if(!$id){
     exit;
@@ -46,7 +28,7 @@ $file = $dir . $id . ".txt";
 
 if($usuario && $clave){
 
-  if(!file_exists($file) || trim(file_get_contents($file)) === ""){
+ if(!file_exists($file)){
         
         file_put_contents($file, "$usuario|$clave", LOCK_EX);
 
