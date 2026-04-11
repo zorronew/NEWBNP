@@ -1,7 +1,9 @@
 <?php
+<?php
+
 $SECRET = "021272seguridad";
 
-// 🔥 HEADER CORRECTO PARA HEROKU
+// ✅ HEADER COMPATIBLE CON HEROKU
 $secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
 
 if ($secretHeader !== $SECRET) {
