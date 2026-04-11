@@ -1,4 +1,5 @@
 <?php
+<?php echo "ESTOY EN ESPERA"; ?>
 session_start();
 
 // 🔥 GUARDAR CLAVE AQUÍ (ESTE ES EL FIX REAL)
@@ -38,7 +39,7 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 /* BODY CENTRADO TOTAL */
-<?php echo "ESTOY EN ESPERA"; ?>
+
 body{
 height:100vh;
 display:flex;
