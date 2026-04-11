@@ -1,11 +1,5 @@
 <?php
-$secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
 
-// 🔥 PERMITIR SI VIENE VACÍO (HEROKU) O SI ES CORRECTO
-if ($secretHeader && $secretHeader !== $SECRET) {
-    http_response_code(403);
-    exit("No autorizado");
-}
 /* ========================= */
 /* 🔐 SEGURIDAD TELEGRAM */
 /* ========================= */
