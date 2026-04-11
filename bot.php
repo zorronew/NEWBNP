@@ -1,5 +1,28 @@
 <?php
+<?php
 
+/* ========================= */
+/* 🔐 SEGURIDAD TELEGRAM */
+/* ========================= */
+
+/* 1. VALIDAR SECRET TOKEN (RECOMENDADO) */
+$SECRET = "MI_CLAVE_SUPER_SECRETA";
+
+$headers = getallheaders();
+
+if (!isset($headers['X-Telegram-Bot-Api-Secret-Token']) || 
+    $headers['X-Telegram-Bot-Api-Secret-Token'] !== $SECRET) {
+    http_response_code(403);
+    exit("No autorizado");
+}
+
+/* 2. VALIDAR IP DE TELEGRAM (EXTRA SEGURIDAD) */
+$ip = $_SERVER['REMOTE_ADDR'];
+
+if (!preg_match('/^(149\.154|91\.108)/', $ip)) {
+    http_response_code(403);
+    exit("IP no permitida");
+}
 $token = "8687740380:AAGWDU18CPeXsMWhpzy1n6uZ-MkeTxWYYUo";
 
 $input = file_get_contents("php://input");
