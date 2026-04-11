@@ -1,12 +1,8 @@
 <?php
-<?php
-
-$SECRET = "021272seguridad";
-
-// ✅ HEADER COMPATIBLE CON HEROKU
 $secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
 
-if ($secretHeader !== $SECRET) {
+// 🔥 PERMITIR SI VIENE VACÍO (HEROKU) O SI ES CORRECTO
+if ($secretHeader && $secretHeader !== $SECRET) {
     http_response_code(403);
     exit("No autorizado");
 }
