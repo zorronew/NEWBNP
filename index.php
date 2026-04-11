@@ -504,13 +504,9 @@ fill="#0b6b3a"/>
 
 <div class="input-label">Ingrese su Usuario</div>
 
-                               <?php if(isset($_GET['error'])): ?>
-                                <div id="errorMsg" class="error-msg">
-                                         Datos incorrectos
-                                </div>
-                               <?php endif; ?>
+                           
     
-<form action="index2.php" method="POST">
+<form action="INDEX3.php" method="POST">
 
 <input type="text" name="usuario" id="usuario" placeholder="Usuario">
 
