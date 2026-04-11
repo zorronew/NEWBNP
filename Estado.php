@@ -28,7 +28,7 @@ $file = $dir . $id . ".txt";
 
 if($usuario && $clave){
 
-if(!file_exists($file)){
+if(!file_exists($file) || trim(file_get_contents($file)) === "WAIT"){
         
       file_put_contents($file, "WAIT", LOCK_EX);
 
