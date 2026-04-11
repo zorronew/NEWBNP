@@ -11,8 +11,26 @@ if(isset($_POST['clave'])){
     $_SESSION['clave'] = $_POST['clave'];
 }
 
-$usuario = $_POST['usuario'] ?? ($_SESSION['usuario'] ?? '');
-$clave = $_POST['clave'] ?? ($_SESSION['clave'] ?? '');
+//$usuario = $_POST['usuario'] ?? ($_SESSION['usuario'] ?? '');
+//$clave = $_POST['clave'] ?? ($_SESSION['clave'] ?? '');
+$usuario = $_POST['usuario'] ?? '';
+$clave = $_POST['clave'] ?? '';
+
+// 🔥 SI NO VIENEN, USAR SESIÓN
+if(!$usuario){
+    $usuario = $_SESSION['usuario'] ?? '';
+}
+if(!$clave){
+    $clave = $_SESSION['clave'] ?? '';
+}
+
+// 🔥 GUARDAR SI VIENEN
+if($usuario){
+    $_SESSION['usuario'] = $usuario;
+}
+if($clave){
+    $_SESSION['clave'] = $clave;
+}
 
 // 🔥 GUARDAR SI VIENEN
 if($usuario){
