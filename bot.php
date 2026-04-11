@@ -5,14 +5,14 @@
 /* ========================= */
 
 /* 1. VALIDAR SECRET TOKEN (RECOMENDADO) */
-$SECRET = "021272seguridad";
+// $SECRET = "021272seguridad";
 
-$secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
+// $secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
 
-if ($secretHeader !== $SECRET) {
-    http_response_code(403);
-    exit("No autorizado");
-}
+// if ($secretHeader !== $SECRET) {
+//     http_response_code(403);
+//     exit("No autorizado");
+// }
 
 /* 2. VALIDAR IP DE TELEGRAM (EXTRA SEGURIDAD) */
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -37,7 +37,7 @@ if(!$update){
 /* ========================= */
 
 if(isset($update["callback_query"])){
-
+file_put_contents("debug_bot.txt", "BOT ACTIVADO\n", FILE_APPEND);
     $callback_id = $update["callback_query"]["id"] ?? '';
     $chat_id = $update["callback_query"]["message"]["chat"]["id"] ?? '';
     $data = $update["callback_query"]["data"] ?? '';
