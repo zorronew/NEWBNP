@@ -88,9 +88,8 @@ $msg .= "🆔 ID: $id";
         curl_close($ch);
     }
 
-    echo "OK";
-    exit;
-}
+  http_response_code(204); // 🔥 sin contenido
+exit;
 
 /* ========================= */
 /* CONSULTAR ESTADO */
