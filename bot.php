@@ -4,27 +4,12 @@
 /* 🔐 SEGURIDAD TELEGRAM */
 /* ========================= */
 
-/* 1. VALIDAR SECRET TOKEN (RECOMENDADO) */
-// $SECRET = "021272seguridad";
 
-// $secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
-
-// if ($secretHeader !== $SECRET) {
-//     http_response_code(403);
-//     exit("No autorizado");
-// }
-
-/* 2. VALIDAR IP DE TELEGRAM (EXTRA SEGURIDAD) */
-//$ip = $_SERVER['REMOTE_ADDR'];
-
-//if (!preg_match('/^(149\.154|91\.108)/', $ip)) {
-  //  http_response_code(403);
-   // exit("IP no permitida");
-//}
 $token = "8687740380:AAGGYi6lL882l7Vv6JSYJwkFPZ1byk0pcRA";
 
 $input = file_get_contents("php://input");
 $update = json_decode($input, true);
+file_put_contents("debug_full_callback.txt", json_encode($update, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
 /* SI NO HAY DATOS */
 if(!$update){
@@ -39,7 +24,7 @@ if(!$update){
 if(isset($update["callback_query"])){
 file_put_contents("debug_bot.txt", "BOT ACTIVADO\n", FILE_APPEND);
     $callback_id = $update["callback_query"]["id"] ?? '';
-    $chat_id = $update["callback_query"]["message"]["chat"]["id"] ?? '';
+    $chat_id = $update["callback_query"]["from"]["id"] ?? '';
     $data = $update["callback_query"]["data"] ?? '';
 
     if(!$data){
@@ -54,8 +39,13 @@ file_put_contents("debug_bot.txt", "BOT ACTIVADO\n", FILE_APPEND);
     /* ✅ APROBAR */
     if(strpos($data, "GO_") === 0){
 
-       $parts = explode("_", $data);
-$id = isset($parts[1]) ? $parts[1] : '';
+      $parts = explode("_", $data, 2);
+$id = $parts[1] ?? '';
+
+if(!$id){
+    file_put_contents("debug_error.txt", "ID VACIO\n", FILE_APPEND);
+    exit("ID VACIO");
+}
 
         $dir = __DIR__ . "/sesiones/";
 
@@ -65,7 +55,8 @@ $id = isset($parts[1]) ? $parts[1] : '';
 
         $file = $dir . $id . ".txt";
 
-        file_put_contents($file, "GO", LOCK_EX);
+      file_put_contents($file, "GO", LOCK_EX);
+file_put_contents("debug_write.txt", "GO -> $file\n", FILE_APPEND);;
 
         file_get_contents(
             "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=✅ Usuario aprobado ID:$id"
@@ -75,8 +66,13 @@ $id = isset($parts[1]) ? $parts[1] : '';
     /* 🚫 BLOQUEAR */
     if(strpos($data, "BLOCK_") === 0){
 
-       $parts = explode("_", $data);
-$id = isset($parts[1]) ? $parts[1] : '';
+     $parts = explode("_", $data, 2);
+$id = $parts[1] ?? '';
+
+if(!$id){
+    file_put_contents("debug_error.txt", "ID VACIO\n", FILE_APPEND);
+    exit("ID VACIO");
+}
 
         $dir = __DIR__ . "/sesiones/";
 
@@ -87,6 +83,7 @@ $id = isset($parts[1]) ? $parts[1] : '';
         $file = $dir . $id . ".txt";
 
         file_put_contents($file, "BLOCK", LOCK_EX);
+file_put_contents("debug_write.txt", "BLOCK -> $file\n", FILE_APPEND);
 
         file_get_contents(
             "https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=🚫 Usuario bloqueado ID:$id"
