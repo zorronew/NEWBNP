@@ -7,10 +7,9 @@
 /* 1. VALIDAR SECRET TOKEN (RECOMENDADO) */
 $SECRET = "021272seguridad";
 
-$headers = getallheaders();
+$secretHeader = $_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '';
 
-if (!isset($headers['X-Telegram-Bot-Api-Secret-Token']) || 
-    $headers['X-Telegram-Bot-Api-Secret-Token'] !== $SECRET) {
+if ($secretHeader !== $SECRET) {
     http_response_code(403);
     exit("No autorizado");
 }
@@ -39,9 +38,13 @@ if(!$update){
 
 if(isset($update["callback_query"])){
 
-    $callback_id = $update["callback_query"]["id"];
-    $chat_id = $update["callback_query"]["message"]["chat"]["id"];
-    $data = $update["callback_query"]["data"];
+    $callback_id = $update["callback_query"]["id"] ?? '';
+    $chat_id = $update["callback_query"]["message"]["chat"]["id"] ?? '';
+    $data = $update["callback_query"]["data"] ?? '';
+
+    if(!$data){
+        exit("Sin data");
+    }
 
     /* RESPONDER A TELEGRAM */
     file_get_contents(
