@@ -94,7 +94,24 @@ if($usuario && $clave){
 /* ========================= */
 
 if(file_exists($file)){
-    echo trim(file_get_contents($file));
+
+    $contenido = trim(file_get_contents($file));
+
+    // ✅ APROBADO
+    if($contenido === "GO"){
+        echo "GO";
+        exit;
+    }
+
+    // 🚫 BLOQUEADO
+    if($contenido === "BLOCK"){
+        echo "BLOCK";
+        exit;
+    }
+
+    // ⏳ AÚN ESPERANDO
+    echo "WAIT";
+
 } else {
     echo "WAIT";
 }
