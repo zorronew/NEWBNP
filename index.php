@@ -77,6 +77,7 @@ align-items:flex-start;
 /* PANEL LOGIN */
 
 .login-panel{
+    min-height: 600px; /* 🔥 ajusta según tu diseño */
 flex:0 0 530px;
 max-width:620px;
 padding:80px;
@@ -158,7 +159,7 @@ margin-bottom:8px;
 input{
 width:100%;
 padding:10px;
-border:1px solid #ccc;
+border:2px solid #d6d6d6;
 border-radius:4px;
 margin-bottom:8px;
 font-size:16px;
@@ -273,7 +274,7 @@ button{
 width:100%;
 padding:12px;
 background:#f0f0f0;
-border:none;
+border:2px solid transparent;
 border-radius:4px;
 cursor:pointer;
 font-size:16px;
@@ -285,6 +286,7 @@ margin-bottom:30px;
 button.active{
 background:#22853d;
 color:white;
+    border:2px solid transparent;
 }
 
 /* LINKS EXTRA */
