@@ -38,7 +38,7 @@ font-family:Arial, Helvetica, sans-serif;
 }
 
 /* BODY CENTRADO TOTAL */
-
+<?php echo "ESTOY EN ESPERA"; ?>
 body{
 height:100vh;
 display:flex;
