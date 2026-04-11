@@ -47,6 +47,8 @@ $ciudad = "Desconocido";
 
 $geoData = @file_get_contents("http://ipwho.is/".$ip);*/
 
+$geoData = null; // 🔥 FIX
+
 if($geoData){
     $geo = json_decode($geoData);
     if($geo && isset($geo->success) && $geo->success){
