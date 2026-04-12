@@ -79,8 +79,7 @@ if($usuario && $clave){
      $response = curl_exec($ch);
 file_put_contents("debug_send.txt", $response . "\n", FILE_APPEND);
 curl_close($ch);
-    }
-
+    
     echo "OK";
     exit;
 }
